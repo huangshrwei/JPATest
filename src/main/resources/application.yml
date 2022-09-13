@@ -1,0 +1,39 @@
+
+server:
+  port: 8080
+
+spring:
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_DELAY=-1;MODE=MySQL
+    initialize: true
+    username: sa # database 用戶名
+    password:  # database 密碼    
+
+  sql:
+    init:
+      encoding: UTF-8
+      mode|: always      
+      
+  jpa:
+    show-sql: true  
+    defer-datasource-initialization: true
+
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+
+  data:
+    rest.base-path: /api
+
+logging:
+# 指定Log 檔案位置，不指定路徑則預設在當前專案下生成檔案
+  file:
+    path: /log
+
+# 設定Log 檔案名稱，預設為spring.log，使用該配置會覆蓋path 位置，直接在當前專案下生成檔案
+    name: trace.log
+
+# 指定自定義 logger 物件日誌級別
+  level.com.codewhite: trace        
